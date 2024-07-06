@@ -722,7 +722,8 @@ static TmEcode UnixManagerCaptureModeCommand(json_t *cmd,
 static TmEcode UnixManagerReloadRulesWrapper(json_t *cmd, json_t *server_msg, void *data, int do_wait)
 {
     SCEnter();
-
+    const char *timeout;
+    ConfGetChildValueBool
     if (SuriHasSigFile()) {
         json_object_set_new(server_msg, "message",
                             json_string("Live rule reload not possible if -s "
